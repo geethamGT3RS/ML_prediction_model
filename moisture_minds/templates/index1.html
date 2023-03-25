@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moisture predictor</title>
+    <style>
+      body {
+        margin:0;
+        font-family: Verdana, sans-serif;
+    }
+      
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+      
+      .active {
+        background-color: #3EC8C3;
+      }
+      div{
+        padding:20px;
+        margin-top:30px;
+        height:1500px;"
+      }
+      input[type="text"]{
+        display: block;
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+      }
+  
+      input[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+  
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+  
+      
+      </style>
+</head>
+<body>
+  <ul>
+    <li><a href="{{url_for('index')}}">soil moisture of march predictor</a></li>
+    <li><a class ="active">Predict with Inputs of sensor 1</a></li>
+    <li><a href="{{url_for('index2')}}">Predict with Inputs of sensor 2</a></li>
+    <li><a href="{{url_for('index3')}}">About me and project</a></li>
+  </ul>
+  <div> 
+  <h1>Enter your parameters for sensor 1</h1>
+  <form action="{{url_for('predict_s1')}}" method="post">
+    <p> pm1 : <input type='text' name='pm1' placeholder='(particulate matter 1)' required='required' /></p>
+    <p> pm2 : <input type='text' name='pm2' placeholder='(particulate matter 2)' required='required' /></p>
+    <p> pm3 : <input type='text' name='pm3' placeholder='(particulate matter 3)' required='required' /></p>
+    <p> am  : <input type='text' name='am' placeholder='(atmospheric moisture)' required='required' /></p>
+    <p> st  : <input type='text' name='st' placeholder='(soil temperature)' required='required' /></p>
+    <p> lum : <input type='text' name='lum' placeholder='(luminosity)' required='required' /></p>
+    <button type="submit">Predict</button>
+</form>
+    <br>
+    <br>
+   {{ output }}
+  
+</div>
+</body>
+</html>
